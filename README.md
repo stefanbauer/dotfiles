@@ -8,7 +8,7 @@ Feel free to explore, learn and copy parts for your own dotfiles. Enjoy!
 
 If you are interested in some more resources, check out this:
 
-📖 - [Read the blog post from Dries Vients](https://driesvints.com/blog/getting-started-with-dotfiles)  
+📖 - [Read the blog post from Dries Vints](https://driesvints.com/blog/getting-started-with-dotfiles)  
 📺 - [Watch a screencast on Laracasts](https://laracasts.com/series/guest-spotlight/episodes/1)  
 💡 - [Learn how to build your own dotfiles](https://github.com/driesvints/dotfiles#your-own-dotfiles)
 
@@ -37,4 +37,4 @@ If you are interested in some more resources, check out this:
 
 ## Thanks to...
 
-[Dries Vients](https://twitter.com/driesvints) for putting so much effort in the fork. Of course also thanks to all the people that inspired him so much creating this repository.
+[Dries Vints](https://twitter.com/driesvints) for putting so much effort in the fork. Of course also thanks to all the people that inspired him so much creating this repository.
