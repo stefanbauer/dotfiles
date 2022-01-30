@@ -1,0 +1,117 @@
+[core]
+    excludesfile = ~/.gitignore_global
+    whitespace = trailing-space,space-before-tab,-indent-with-non-tab,tab-in-indent,tabwidth=4
+    autocrlf = input
+    ignorecase = true
+    editor = st -w -n
+[user]
+    name = Stefan Bauer
+    email =
+    signingkey =
+[includeIf "gitdir:~/Sites/frischepost/"]
+    path = .gitconfig_frischepost
+[credential]
+    helper = osxkeychain
+[diff]
+    patience = true
+    algorithm = patience
+    compactionHeuristic = true
+[notes]
+    displayRef = refs/notes/*
+[advice]
+    detachedHead = false
+[pull]
+    rebase = true
+[push]
+    default = current
+[merge]
+    ff = false
+    summary = true
+    log = false
+[rerere]
+    enabled = true
+[rebase]
+    autosquash = true
+    autostash = true
+[stash]
+    showPatch = true
+[branch]
+    autosetuprebase = always
+[color]
+    ui = auto
+[color "branch"]
+    current = yellow reverse
+    local = yellow
+    remote = green
+[color "diff"]
+    meta = yellow
+    func = cyan bold
+    frag = magenta
+    old = red
+    new = green
+    whitespace = red reverse
+[color "status"]
+    added = green
+    changed = yellow
+    untracked = cyan
+    nobranch = red
+[pretty]
+    changelog = format:* %h %s
+    public-changelog = format:* %s
+    pretty-history = format:%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset
+[alias]
+    st = status --show-stash
+    co = checkout
+    di = diff
+    ci = commit
+    cim = commit -m
+    last = log -1 HEAD --stat
+    rank = shortlog -sn --no-merges
+    cleanup = "!git branch --merged | grep  -v '\\*\\|master\\|main\\|develop\\|dev' | xargs -n 1 git branch -d"
+
+    amend = commit --amend
+    update = add -u
+    up-head = "!f() { git diff-tree --no-commit-id --name-only --diff-filter=ACMR -r HEAD; }; git add -p `f`"
+
+    staged = diff --cached
+    ls-staged = diff-index --cached --name-only HEAD
+    di-staged = !git diff-index --cached --name-only --diff-filter=ACMR HEAD | xargs git di
+    co-staged = !git diff-index --cached --name-only --diff-filter=ACMR HEAD | xargs git co
+    up-staged = "!f() { git ls-staged; }; git add -p `f`"
+
+    coding-standards = "!php-cs-fixer fix"
+    cs = "!f() { git diff-tree --no-commit-id --name-only --diff-filter=ACMR -r \"$1\" | xargs -n1 git coding-standards; }; f"
+    cs-staged = "!git diff-index --cached --name-only --diff-filter=ACMR HEAD | xargs -n1 git coding-standards"
+    cs-head = "!git diff-tree --no-commit-id --name-only --diff-filter=ACMR -r HEAD | xargs -n1 git coding-standards"
+    cs-tree = "!f() { git ls-tree -r --name-only HEAD \"$1\" | xargs -n1 git coding-standards; }; f"
+
+    ph = log --graph --pretty=pretty-history --abbrev-commit --date=relative
+    cl = log --pretty=changelog  --no-merges --cherry --abbrev-commit --date-order
+    sl = log --oneline --reverse --no-merges --stat
+
+    rv = remote -v
+    fa = fetch --all -v
+    ff = pull --ff-only
+    wu = branch -a --no-merged
+    pt = push --tags origin master:master main:main develop:develop
+    tag = --sort=v:refname
+
+    latest-version = "!git tag --sort=v:refname | tail -n1"
+[git-up "fetch"]
+    prune = true
+    all = true
+[filter "lfs"]
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    required = true
+    process = git-lfs filter-process
+[mergetool]
+    keepBackup = true
+[commit]
+    gpgsign = true
+[gpg]
+    program = /usr/local/MacGPG2/bin/gpg2
+[init]
+    defaultBranch = main
+[tag]
+    forceSignAnnotated = false
