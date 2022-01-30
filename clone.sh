@@ -41,7 +41,7 @@ declare -a REPOSITORIES=(
     "shopware-connector"
     "sync-management"
     "warehouse-connector"
-    "warehousing"
+    "warehouse"
 )
 
 for REPOSITORY in "${REPOSITORIES[@]}"
