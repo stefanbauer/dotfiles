@@ -20,6 +20,15 @@ ln -s $HOME/.dotfiles/.zshrc $HOME/.zshrc
 # Update Homebrew recipes
 brew update
 
+# Install nvm first, because it's needed for svgo
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+
+# Install node in specific version
+nvm install v15.14
+
 # Install all our dependencies with bundle (See Brewfile)
 brew tap homebrew/bundle
 brew bundle --file $DOTFILES/Brewfile

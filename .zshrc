@@ -5,6 +5,10 @@ export LANG=en_US.UTF-8
 export LC_ALL=${LANG}
 export EDITOR='st -w'
 
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+
 CASE_SENSITIVE=true
 HIST_STAMPS="dd/mm/yyyy"
 DISABLE_AUTO_TITLE=true
@@ -59,3 +63,7 @@ SPACESHIP_DOCKER_SHOW=false
 
 source $DOTFILES/path.zsh
 source $DOTFILES/aliases.zsh
+
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
