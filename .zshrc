@@ -3,14 +3,14 @@ source $(brew --prefix)/share/antigen/antigen.zsh
 export DOTFILES=$HOME/.dotfiles
 export LANG=en_US.UTF-8
 export LC_ALL=${LANG}
-export EDITOR='st -w'
+export EDITOR='subl -w'
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
 CASE_SENSITIVE=true
-HIST_STAMPS="dd/mm/yyyy"
+HIST_STAMPS="%d/%m/%y %T"
 DISABLE_AUTO_TITLE=true
 
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor root line)
@@ -33,7 +33,6 @@ antigen bundles <<EOBUNDLES
     rsync
     yarn
     agkozak/zsh-z
-    valentinocossar/sublime
     jessarcher/zsh-artisan
     zsh-users/zsh-autosuggestions
     zsh-users/zsh-syntax-highlighting
@@ -63,7 +62,3 @@ SPACESHIP_DOCKER_SHOW=false
 
 source $DOTFILES/path.zsh
 source $DOTFILES/aliases.zsh
-
-
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
