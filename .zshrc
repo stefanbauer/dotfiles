@@ -25,6 +25,7 @@ antigen bundles <<EOBUNDLES
     composer
     docker
     docker-compose
+    fzf
     gem
     git
     git-flow-avh
@@ -33,6 +34,7 @@ antigen bundles <<EOBUNDLES
     rsync
     yarn
     agkozak/zsh-z
+    jasonmccreary/git-trim@main
     jessarcher/zsh-artisan
     zsh-users/zsh-autosuggestions
     zsh-users/zsh-syntax-highlighting
@@ -62,3 +64,5 @@ SPACESHIP_DOCKER_SHOW=false
 
 source $DOTFILES/path.zsh
 source $DOTFILES/aliases.zsh
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

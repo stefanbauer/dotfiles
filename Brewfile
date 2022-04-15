@@ -8,7 +8,9 @@ tap 'nicoverbruggen/homebrew-cask'
 # Binaries
 brew 'antigen'
 brew 'bash'
+brew 'bat'
 brew 'coreutils'
+brew 'fzf'
 brew 'gh'
 brew 'git'
 brew 'git-extras'
@@ -112,5 +114,6 @@ mas 'Affinity Photo', id: 824183456
 mas 'Affinity Publisher', id: 881418622
 mas 'Keynote', id: 409183694
 mas 'Lanscan', id: 472226235
+mas 'Things', id: 904280696
 mas 'Numbers', id: 409203825
 mas 'Pages', id: 409201541
