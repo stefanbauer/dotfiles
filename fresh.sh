@@ -12,6 +12,7 @@ fi
 
 # (Re)install antigen in any case
 brew reinstall antigen
+brew reinstall asdf
 
 # Removes .zshrc from $HOME (if it exists) and symlinks the .zshrc file from the .dotfiles
 rm -rf $HOME/.zshrc
@@ -20,28 +21,40 @@ ln -s $HOME/.dotfiles/.zshrc $HOME/.zshrc
 # Update Homebrew recipes
 brew update
 
-# Install nvm first, because it's needed for svgo
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+# Install node and python
+asdf plugin-add nodejs
+asdf install nodejs latest
 
-# Install node in specific version
-nvm install v15.14
+asdf plugin-add python
+asdf install python latest
+asdf install python pypy2.7-7.3.9
+
+asdf global nodejs latest
+asdf global python pypy2.7-7.3.9
+
+asdf install nodejs 10.24.1
+asdf install nodejs 16.10.0
+
+asdf global python latest
+
+# Install Rosetta
+sudo softwareupdate --install-rosetta
 
 # Install all our dependencies with bundle (See Brewfile)
 brew tap homebrew/bundle
-brew bundle --file $DOTFILES/Brewfile
+brew tap homebrew/services
+brew bundle --file $HOME/.dotfiles/Brewfile
 
-# Prepare local binaries directory
-mkdir -p /usr/local/bin
-sudo chown -R $(whoami) /usr/local/bin
+# Install developer tools
+xcode-select --install
 
 # Install PHP extensions with PECL
+#pecl -d php_suffix=7.4 install imagick redis xdebug
+#pecl -d php_suffix=8.0 install imagick redis xdebug
 pecl install imagick redis xdebug
 
 # Install global Composer packages
-/usr/local/bin/composer global require laravel/installer laravel/valet beyondcode/expose
+/opt/homebrew/bin/composer global require laravel/installer laravel/valet
 
 # Install Laravel Valet
 $HOME/.composer/vendor/bin/valet install
@@ -51,14 +64,14 @@ $HOME/.composer/vendor/bin/valet trust
 mkdir $HOME/Sites
 
 # Create necessary sites subdirectories
-mkdir $HOME/Sites/frischepost
+mkdir $HOME/Sites/Hospitable
 
 # Clone Github repositories
-$DOTFILES/clone.sh
+#$DOTFILES/clone.sh
 
 # Symlink the Mackup config file and directory to the home directory
-ln -s $DOTFILES/.mackup.cfg $HOME/.mackup.cfg
-ln -s $DOTFILES/.mackup $HOME/.mackup
+ln -s $HOME/.dotfiles/.mackup.cfg $HOME/.mackup.cfg
+ln -s $HOME/.dotfiles/.mackup $HOME/.mackup
 
 # Set macOS preferences - we will run this last because this will reload the shell
-source $DOTFILES/.macos
+#source $DOTFILES/.macos

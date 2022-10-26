@@ -5,10 +5,6 @@ export LANG=en_US.UTF-8
 export LC_ALL=${LANG}
 export EDITOR='subl -w'
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
-
 CASE_SENSITIVE=true
 HIST_STAMPS="%d/%m/%y %T"
 DISABLE_AUTO_TITLE=true
@@ -66,3 +62,4 @@ source $DOTFILES/path.zsh
 source $DOTFILES/aliases.zsh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+. /opt/homebrew/opt/asdf/libexec/asdf.sh

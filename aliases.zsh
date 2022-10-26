@@ -1,5 +1,5 @@
 # Shortcuts
-alias -g C=' | cat '
+alias -g C=' | pbcopy '
 alias -g G=' | grep '
 alias -g J=' | jq -CS '
 alias -g L=' | less '
@@ -8,8 +8,8 @@ alias -g S=' | sed '
 alias -g U=' | uniq '
 alias -g X=' | xargs '
 
-alias cat='bat -P'
-alias la='ls -lsAi'
+alias cat='bat -P --theme=Nord -f'
+alias la='ll'
 alias ll="$(brew --prefix)/opt/coreutils/libexec/gnubin/ls -AhlFo --color --group-directories-first"
 alias copy='rsync -avv --stats --human-readable --itemize-changes --progress --partial'
 
@@ -20,7 +20,7 @@ alias phpstorm='open -a /Applications/PhpStorm.app "`pwd`"'
 # Valet / Laravel
 alias php="valet php"
 alias composer="valet composer"
-alias a="php artisan"
+alias art="php artisan"
 alias mf="php artisan migrate:fresh"
 alias mfs="php artisan migrate:fresh --seed"
 
