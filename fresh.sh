@@ -14,10 +14,6 @@ fi
 brew reinstall antigen
 brew reinstall asdf
 
-# Removes .zshrc from $HOME (if it exists) and symlinks the .zshrc file from the .dotfiles
-rm -rf $HOME/.zshrc
-ln -s $HOME/.dotfiles/.zshrc $HOME/.zshrc
-
 # Update Homebrew recipes
 brew update
 
@@ -27,15 +23,6 @@ asdf install nodejs latest
 
 asdf plugin-add python
 asdf install python latest
-asdf install python pypy2.7-7.3.9
-
-asdf global nodejs latest
-asdf global python pypy2.7-7.3.9
-
-asdf install nodejs 10.24.1
-asdf install nodejs 16.10.0
-
-asdf global python latest
 
 # Install Rosetta
 sudo softwareupdate --install-rosetta
@@ -44,6 +31,10 @@ sudo softwareupdate --install-rosetta
 brew tap homebrew/bundle
 brew tap homebrew/services
 brew bundle --file $HOME/.dotfiles/Brewfile
+
+# Removes .zshrc from $HOME (if it exists) and symlinks the .zshrc file from the .dotfiles
+rm -rf $HOME/.zshrc
+ln -s $HOME/.dotfiles/.zshrc $HOME/.zshrc
 
 # Install developer tools
 xcode-select --install
@@ -54,20 +45,11 @@ xcode-select --install
 pecl install imagick redis xdebug
 
 # Install global Composer packages
-/opt/homebrew/bin/composer global require laravel/installer laravel/valet
+/opt/homebrew/bin/composer global require laravel/installer laravel/valet beyondcode/expose
 
 # Install Laravel Valet
 $HOME/.composer/vendor/bin/valet install
 $HOME/.composer/vendor/bin/valet trust
-
-# Create a Sites directory
-mkdir $HOME/Sites
-
-# Create necessary sites subdirectories
-mkdir $HOME/Sites/Hospitable
-
-# Clone Github repositories
-#$DOTFILES/clone.sh
 
 # Symlink the Mackup config file and directory to the home directory
 ln -s $HOME/.dotfiles/.mackup.cfg $HOME/.mackup.cfg
@@ -75,3 +57,5 @@ ln -s $HOME/.dotfiles/.mackup $HOME/.mackup
 
 # Set macOS preferences - we will run this last because this will reload the shell
 #source $DOTFILES/.macos
+
+echo "Please configure Dropbox and use `mackup restore` before continuing cloning repositories via clonse.sh"
