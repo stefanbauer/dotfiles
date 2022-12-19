@@ -58,4 +58,4 @@ ln -s $HOME/.dotfiles/.mackup $HOME/.mackup
 # Set macOS preferences - we will run this last because this will reload the shell
 #source $DOTFILES/.macos
 
-echo "Please configure Dropbox and use `mackup restore` before continuing cloning repositories via clonse.sh"
+echo "Please configure Dropbox and use mackup restore before continuing cloning repositories via clonse.sh"
